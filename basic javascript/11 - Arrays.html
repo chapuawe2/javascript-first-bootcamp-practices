@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Arrays</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* You can declare arrays, by puttin this items inside squares
+		and separating them by one ",", array can store any type of data,
+		strings, numbers, booleans, other arrays, functions, etc */
+
+		var arr = [
+			'John', 
+			'Bob', 
+			'Mary', 
+			true, 
+			0, 
+			[1, 2, 3], 
+			false,
+			function(name){
+				return 'Hello ' + name;
+			}
+		];
+
+		console.log('\n**** First array ****');
+
+		console.log(arr);
+		console.log(arr[0]);
+		console.log(arr[5][1]);
+		console.log(arr[7](arr[1]));
+
+		/* Other way of declare a array, is using the array constructor,
+		with that you can set the items inside the parenthesis, separating them
+		with comas, a example syntax:
+
+		new Array(item, item, item); */
+
+		var arr2 = new Array(1,2,3);
+
+		var colors = ['white', 'black', 'red'];
+
+		/* You can add a item at any position of the array */
+
+		colors[1] = 'green';
+
+		/* You can add a new item at the final of the array */
+
+		colors.push('blue');
+
+		/* You can delete the last item of the array */
+
+		colors.pop();
+
+		/* You can delete the first item of the array */
+
+		colors.shift();
+
+		/* You can add a item at the top of the array */
+
+		colors.unshift('purple');
+
+		console.log('\n**** Second array ****');
+
+		console.log(colors);
+
+		/* You can return the index of a specify item */
+
+		console.log(colors.indexOf('red'));
+		console.log(colors.indexOf('brown'));
+
+		/* If the item searched isnt in the array, indexOf will return
+		"-1" */
+
+		if (colors.indexOf('blue') === -1) {
+			colors.push('blue');
+		}
+
+		console.log(colors);
+	</script>
+</body>
+</html>

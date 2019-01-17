@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Note Manager</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+</head>
+<body>
+	<style>
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Josefin Sans', sans-serif;
+		    color: #777;
+		}
+
+		.wrapper {
+		    width: 90%;
+		    max-width: 760px;
+		    margin: 20px auto;
+		    border-radius: 3px;
+		    box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+		    box-sizing: border-box;
+		    padding: 0 0 20px;
+		    border: 1px solid lightgray;
+		}
+
+		.changeBg {
+		    background-color: yellow;
+		}
+
+		.changeFt {
+		    font-style: italic;
+		    font-size: 40px;
+		}
+
+		input {
+		    color: #777;
+		    outline: none;
+		    border: 1px solid #777;
+		}
+		input:focus {
+		    border: 1px solid green;
+		}
+		header {
+		    text-align: center;
+		    background: #efefef;
+		}
+
+		header h2 {
+		    padding: 40px 0 20px 0;
+		    color: #555;
+		}
+
+		header #search-note input{
+		    padding: 5px 2px;
+		    width: 200px;
+		    border-radius: 2px;
+		    margin: 10px 0 40px 0;
+		}
+
+		.note-list ul {
+		    list-style: none;
+		    padding: 40px;
+		}
+
+		.note-list ul li {
+		    padding: 5px;
+		    margin-bottom: 10px;
+		    border-bottom: 0.1px solid #ccc;
+		    border-left: 5px solid #efefef;
+		}
+
+		.note-list ul li p:nth-child(2) {
+		    text-align: right;
+		}
+
+		.note-list ul li p i {
+		    cursor: pointer;
+		    margin-left: 5px;
+		}
+
+		.note-list ul li p i.fa-pencil-square-o{
+		    color: #228B22;
+		}
+		.note-list ul li p i.fa-times {
+		    color: #DC143C;
+		}
+		.note-list ul li input {
+		    display: none;
+		    padding: 5px 0;
+		    width: 70%;
+		    margin: 5px auto 0 auto;
+		}
+
+		#add-notes {
+		    padding: 60px 0;
+		}
+		#hide-list {
+		    margin: 20px;
+		}
+		#hide-list label {
+		    padding: 5px 10px;
+		    margin: 10px;
+		    border-bottom: 1px solid #777;
+		    user-select: none;
+		}
+
+		#hide-list label:hover {
+		    background: #efefef;
+		}
+
+		#hide-list input[type='checkbox'] {
+		    display: none;
+		}
+
+		form#add{
+		    margin-top: 10px;
+		    text-align: center;
+		}
+
+		form#add input{
+		    border-radius: 2px;
+		}
+
+		form#add input[type='text'] {
+		    padding: 5px 0 5px 2px;
+		    width: 250px;
+		}
+
+		form#add input[type='submit'] {
+		    padding: 5px 0;
+		    width: 70px;
+		    background: #6B8E23;
+		    color: #fff;
+		} 
+
+		form#add input[type='submit']:hover {
+		    background: #7c9f34;
+		}
+
+		.changeBg {
+			background-color: yellow
+		}
+
+		.changeFt {
+			font-family: italic;
+		}
+	</style>
+
+	<div class="wrapper">
+		<header>
+			<h2 id="heading">Note Manager</h2>
+			<form id="search-note">
+				<input type="text" placeholder="Search note...">
+			</form>
+		</header>
+		<div class="note-list">
+			<ul id="list">
+				<li>
+					<p>First note</p> 
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+				<li>
+					<p>Second note</p>
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+				<li>
+					<p>Third note</p>
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+			</ul>
+		</div>
+		<div id="hide-list">
+		    <label for="hide">Hide notes</label>
+		    <input type="checkbox" id="hide">
+	    </div>
+		<div id="add-notes">
+			<form id="add">
+				<input type="text" placeholder="Add a note.." id="add-input">
+				<input type="submit"  value="Add" id="add-btn">
+			</form>
+		</div>
+	</div>
+</body>
+<script>
+	h2 = document.querySelector('#heading');
+
+	/* You can use className to directly change all the class by a string */
+	h2.className = 'changeBg';
+
+	/* You can use += to concatenate strings */
+	h2.className += ' changeFt';
+
+	/* So here you have classList object, and have three methods, these are
+	add, remove, and toggle */
+
+	/* add method, adds a new class */
+	h2.classList.add('changeFt');
+
+	/* remove method deletes a class */
+	h2.classList.remove('changeBg');
+
+	/* toggle method have 2 functions, if the class exists it deletes that,
+	if not its add that */
+	h2.classList.toggle('changeBg');
+
+	console.log(typeof h2.className)
+	/* Pd: you can use typeof to know the type of some data */
+
+	console.log(h2.classList);
+</script>
+</html>
