@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays ES6</title>
+</head>
+<body>
+	<ul>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	const lis = document.querySelectorAll('li');
+
+	/* To convert a node or htmlcol to an array, you can use slice or
+	array.from, slice without arguments only copy the properties, and then
+	you use call, so set as a prototype the properties of the node lis */
+	
+	const lisArr = Array.prototype.slice.call(lis); /* Array.from(lis);*/
+
+	//console.log(lis);
+	//console.log(lisArr);
+
+	/*lisArr.forEach(li => {
+		li.addEventListener('click', () => {
+			li.style.color = 'red';
+		})
+	});*/
+
+	for (let li of lis) {
+		li.addEventListener('click', () => {
+			li.style.color = 'red';
+		});
+	}
+</script>
+</html>

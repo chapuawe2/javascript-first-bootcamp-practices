@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rest Parameter</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	/* Rest Parameter didn't work with arrow functions */
+
+
+	// ES5 WAY //
+
+	//const a = function (x, y){
+	const a = function (numbers = 0){
+		//console.log(x + y);
+
+		/* In es5 you can get the rest of the arguments by
+		getting a special keyword called arguments */
+		const args = arguments;
+		console.log(args[0] + args[1]);
+	}
+
+	//a(10, 20, 30, 40);
+
+
+	// ES6 WAY //
+
+	const b = (x, y, ...rest) => {
+		/* In es6 you can get them using spread operator, that returns an array
+		with the arguments that you didnt declare */
+
+		const other = rest.reduce((previous, actual) => {return previous + actual});
+		console.log(x + y + other);
+	}
+
+	//b(10, 20, 30, 40);
+
+	/* Rest Parameter works with any name while you put "..." before */
+	const family = (lastname, ...names) => {
+		names.forEach(name => {console.log(`${name} ${lastname}`)});
+	}
+
+	family('Smith', 'John', 'Liz', 'Mary', 'Nick', 'Carly');
+
+</script>
+</html>

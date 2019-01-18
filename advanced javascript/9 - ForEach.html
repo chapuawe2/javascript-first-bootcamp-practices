@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ForEach</title>
+</head>
+<body>
+</body>
+
+<script type="text/javascript">
+	var mybody = document.querySelector('body');
+
+	var names = ['Mary', 'Nick', 'Alex', 'Jane'];
+
+	for (var i = 0; i < names.length; i++){
+		mybody.innerHTML += 'From for loop the name is ' + names[i] + '<br>';
+	}
+
+	mybody.innerHTML += '------------------------------<br>'
+
+	/* The only thing that you need to know is that forEach function inside takes
+	three parameters, the item, the index of the item and the array of the item */
+	names.forEach(function(element, index) {
+		mybody.innerHTML += 'From forEach loop the name is ' + element + '<br>';
+	});
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Let y Const</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	//Const will never be changed
+	const name = 'John';
+	//Let will change dinamically
+	let age = 28;
+
+	//if we type
+	//name = 'Nick'
+	//We'll get a error
+
+	//But if we type
+	age = 20;
+	//there isnt a error
+	//console.log(name, age);
+
+	let person = 'John';
+	//let person = 'Nick';
+	//gets an error because its solve the name conflicts, the correct way is
+	person = 'Nick';
+
+	//console.log(varperson);
+	var varperson = 'Mary'; //undefined
+
+	//console.log(letperson);
+	let letperson = 'Bob' //gets a error thats better
+
+	//LET AND CONST DONT SAVE IN THE WINDOW OBJECT
+	let windowtest = 'Hello';
+	//console.log(window.windowtest) its undefined
+
+	//LET AND CONST ARE BLOCK CODE, THAT MEANS THEY ONLY WORK ON EM SCOPE
+	if (true){
+		let letblock = 'myblock';
+		const constblock = 'myblock';
+	}
+
+	//console.log(letblock, constblock) undefined
+	let blocktest = 'John';
+	if (true){
+		let blocktest = 'Nick';
+		//console.log(blocktest);
+	}
+	//console.log(blocktest);
+
+	const objectTest = {
+		name: 'John',
+		age: 19
+	}
+
+	objectTest.age = 20;
+	//console.log(objectTest);
+
+	for (var i = 0; i < 5; i++){
+		//console.log(i);
+	}
+
+	//console.log(i);
+
+	for (let i = 0; i < 5; i++){
+		//console.log(i);
+	}
+
+	//console.log(i); //Will get the var i because let its block code
+
+	for (let i = 0; i < 5; i++){
+		setTimeout(function(){
+			console.log(i);
+		}, i*500);
+	}
+
+	//it works with let because let creates a different variable for every execution
+	//this is because let is a block execution variable
+
+	/*for (var i = 0; i < 5; i++){
+		setTimeout(function(){
+			console.log(i);
+		}, i*500);
+	}*/
+
+
+	//In old classes we know this is the way to execute a Effi with vars
+	(function(){
+		var a = 10
+	}())
+
+	//console.log(a) gets undefined
+
+	{
+		let b = 20
+	}
+
+	//this is the way to do with let and const vars
+	//console.log(b) gets an error
+
+</script>
+</html>

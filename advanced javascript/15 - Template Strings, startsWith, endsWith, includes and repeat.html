@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Template Strings, startsWith, endsWith, includes and repeat</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	/* ES5 WAY TO DO */
+	const name = 'John';
+	let age = 28;
+	let profession = 'Instructor';
+
+	function personES5(){
+		//console.log('Hello, my name is '+ name + ', I am ' + age + ' years old, and I am ' + profession);
+		console.log('Hello, my name is '+ name + ', \nI\'m ' + age + ' years old, and I\'m ' + profession);
+	}
+
+	//personES5();
+
+	/* ES6 WAY TO DO */
+
+	function personES6(){
+		/*console.log(`Hello, my name is ${name}, 
+I'm ${age} years old, and I'm ${profession}`);*/
+
+		return `Hello, my name is ${name}, 
+I'm ${age} years old, and I'm ${profession}`
+	}
+
+	//personES6();
+
+	/* CALCULATE EXPERIENCE */
+
+	function experienceES5(company1, company2){
+		console.log('I have ' + (company1 + company2) + ' years of experience');
+	}
+
+	//experienceES5(4, 7);
+
+	function experienceES6(company1, company2){
+		//console.log(`I have ${company1 + company2} years of experience`);
+		console.log(`${personES6()} I have ${company1 + company2} years of experience`);
+	}
+	
+	//experienceES6(3, 3);
+
+	/*** NEW METHOD ***/
+
+	let greet = 'Hello my dear student';
+	console.log(greet.startsWith('Hello'))
+	console.log(greet.startsWith('hello'))
+
+	console.log(greet.endsWith('student'))
+	console.log(greet.endsWith('Student'))
+
+	console.log('------------');
+	console.log(greet.includes('dear'));
+	console.log(greet.repeat(3));
+</script>
+</html>

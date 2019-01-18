@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reduce</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var numbers = [100, 200, 300];
+	var sum = 0;
+
+	/* ES5 Way */
+
+	for(var i = 0; i < numbers.length; i++){
+		sum += numbers[i];
+	}
+
+	console.log(sum);
+
+	/* ES6 Way */
+
+	/* reduce method too takes anonymous function with parameters, but its a little
+	different because, the parameters are 2 (previous, actual), that means the previous item
+	and the actual item, at the start if you dont put a separate argument ", 0)" that
+	takes the place at the begin of "previous" reduce will take the actual and previous
+	the same at the begin */
+
+	var total = numbers.reduce(function(previous, actual){
+		return previous + actual;
+	}, 0)
+
+	//console.log(total);
+
+	var weeklyEarnings = [750, 642, 823, 1456];
+
+	/* as I say, you need to put a first previous value */
+
+	var income = weeklyEarnings.reduce(function(previous, actual){
+		return previous + actual;
+	}, 5000)
+
+	//console.log(income);
+
+	var firstnames = ['John', 'Jane', 'Mary'];
+	var lastnames = ['Smith', 'Brown', 'Doe'];
+
+
+	/* in this case the previous value was an array, it takes the previous, and push
+	the actual value + the lastname of the index of actual value, then, after the push
+	return previous (the array with the item pushed) and reduce takes it for the next
+	iteration */
+	
+	var fullnames = firstnames.reduce(function(previous, actual, index){
+		previous.push(actual + ' ' + lastnames[index]);
+		return previous;
+	}, [])
+
+	console.log(fullnames);
+
+</script>
+</html>
