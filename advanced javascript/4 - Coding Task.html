@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding task</title>
+	<meta charset="utf-8">
+</head>
+<body>
+</body>
+
+<script>
+	var scores = [55, 35, 87, 45];
+
+	function check(arr, fn) {
+		var newArr = [];
+
+		for (var i = 0; i < arr.length; i++) {
+			/* push the result if pass, it will be true or false */
+			newArr.push(fn(arr[i]));
+		}
+
+		return newArr;
+	}
+
+	function pass(score) {
+		return score >= 51;
+	}
+
+	console.log('\n**** Scores that pass the examn ****')
+	console.log(check(scores, pass));
+
+	function finalResult(score) {
+		if (score >= 81) {
+			return function(name){
+				console.log(name + ', you has passed the exam and you are a student of State University');
+			}
+		} else if (score >= 51) {
+			return function(name){
+				console.log(name + ', you has passed the exam and you are a student of State College');
+			}
+		} else {
+			return function(name){
+				console.log(name + ', you failed the exam');
+			}
+		}
+	}
+
+	/* You can return another function to be used later */
+	console.log('\n**** Returns another function ****')
+	result1 = finalResult(77);
+	result1('John');
+</script>
+
+</html>

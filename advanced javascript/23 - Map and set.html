@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Map and set</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	/* MAP SECTION */
+	/* without values */
+	const mymap0 = new Map();
+
+	/* with values */
+	const mymap = new Map([
+		[10, 'ten'],
+		['ismarried', false]
+	]);
+
+
+	/* using set method to set a entrie */
+	/* syntax: key, value */
+
+	mymap.set('name', 'John');
+	mymap.set(true, 'Yes');
+
+	/* can store all type of data */
+	const myobjs = {};
+	mymap.set(myobjs, 'person');
+
+	console.log('\n**** Geting a value ****');
+	console.log(mymap.get('name'));
+
+	console.log('\n**** Check if has a key ****');
+	console.log(mymap.has(myobjs));
+
+	/* Deleting a key */
+	mymap.delete(10);
+
+	{
+		let del = false;
+
+		if (del){
+			/* Delete all the entries */
+			mympa.clear();
+		}
+	}
+
+	console.log('\n**** Getting the complete object ****');
+	console.log(mymap);
+
+	console.log('\n**** Getting the size of the object ****');
+	console.log(mymap.size);
+
+	console.log('\n**** Getting the value and key of the object using forEach method ****');
+	mymap.forEach((value, key)=>{
+		console.log(value, key);
+	});
+
+	console.log('\n**** Getting only the key of the object ****');
+	for (let key of mymap.keys()){
+		console.log(key);
+	}
+
+	console.log('\n**** Getting only the value of the object ****');
+	for (let value of mymap.values()){
+		console.log(value);
+	}
+
+	console.log('\n**** Getting the complete entrie ****');
+	for (let entrie of mymap.entries()){
+		console.log(entrie);
+	}
+
+	console.log('\n**** Getting the entrie destructured ****');
+	for (let [key, value] of mymap.entries()){
+		console.log(key, value);
+	}
+
+	/* SET SECTION */
+	console.log('\n**** SET SECTION ****');
+	/* with values */
+
+	const myset0 = new Set(['Hello', 'Nick'])
+
+	/* without values */
+
+	const myset = new Set();
+
+	/* How to set entries to myset */
+
+	myset.add('Nick');
+	myset.add(10);
+	myset.add(false);
+	myset.add({firstname: 'Nick'});
+	myset.add('Nick');
+
+	/* the nick value will not appear two times, because set only store unique values */
+
+	console.log('\n**** Getting the set obj ****');
+	console.log(myset);
+
+	console.log('\n**** Gettin the size of UNIQUE VALUES ****');
+	console.log(myset.size);
+
+	/* Note: all the other stuff works in the exact same way of map, but
+	the keys() and values() methods return only the values because set doesnt use keys,
+	and entries() method return an array with two values, but these are the same*/
+</script>
+</html>

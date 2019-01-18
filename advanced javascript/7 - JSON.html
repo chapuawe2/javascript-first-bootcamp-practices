@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JSON Stringify</title>
+</head>
+<body>
+
+</body>
+
+	<script type="text/javascript">
+		var myObj = {
+			name: 'John',
+			age: 27,
+			married: true,
+			childrenNames: ['Anna', 'Mary']
+		}
+
+		/* You can convert to json an object by using JSON.stringify */
+		var myData = JSON.stringify(myObj);
+
+		console.log('\n**** JSON stringify ****');
+		console.log(myData);
+
+		/* Also you too can decode the json with JSON.parse */
+		myObj2 = '{"name":"John","age":27,"married":true,"childrenNames":["Anna","Mary"]}';
+		myData2 = JSON.parse(myObj2);
+
+		console.log('\n**** JSON parse ****');
+		console.log(myData2)
+	</script>
+
+</html>

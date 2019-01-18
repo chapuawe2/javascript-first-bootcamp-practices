@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototype functions</title>
+	<meta charset="utf-8">
+</head>
+<body>
+</body>
+
+<script>
+	/* this twice are objects, but differently declared */
+
+	var a = {};
+	var b = new Object();
+
+	/* Right here you are setting a prototype of the object constructor, 
+	that means that the past are the same prototype because there was created
+	with this */
+	Object.prototype.greet = 'Hello';
+
+	/* As you see, these three has the same prototype, and in his prototype
+	has the "greet" property with value "Hello" */
+	console.log('\n**** Testing prototype with constructors ****')
+
+	console.log(Object);
+	console.log(a);
+	console.log(b);
+
+	const withoutProto = false;
+
+	function Person(firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		if (withoutProto) {
+			/* With that you set the property and save the function in every
+			thing that you create with this constructor, and you are wasting space */
+
+			this.getFullName = function(){
+				return this.firstname + ' ' + this.lastname;
+			}
+		}
+	}
+
+	var person1 = new Person('John', 'Smith');
+
+	/* When you set the prototype, no matters if you declared variables with the 
+	constructor in the past, these will update because they dont save the prototype
+	they only point the prototype of the constructor, unless you set its own prototype */
+
+	Person.prototype.getFullName = function(){
+		return this.firstname + ' ' + this.lastname;
+	};
+
+	/* Using prototype you dont waste space, cause the function is saved in the constructor
+	and only change the parameters */
+
+	var person2 = new Person('Nick', 'Doe');
+
+	console.log(person1.getFullName());
+	console.log(person2.getFullName());
+</script>
+
+</html>
