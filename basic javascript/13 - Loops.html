@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Loops - for, while and do while</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		/* Declaring an array */
+
+		var arr = ['John', 'Nick', 'Tyler', 'Bob', 'Patrick']
+
+		console.log('\n**** For loop ****');
+
+		/* The for loop takes three operations, the first is declaring the variable
+		the second is make a comparison and if its true, executes the code, at the end
+		of the code sums by 1 the variable */
+
+		var breaker = 0; 
+		for (var i = 0; i < arr.length; i++) {
+
+			if (arr[i] === 'Bob') {
+				console.log(arr[i] + ' is my brother');
+
+				if (breaker) {
+					/* the break operator breaks the actual loop and skip all the next
+					iterations */
+
+					break
+				} else {
+					/* the continue operator stop executing the code of its opeartion
+					and pass to the next */
+
+					continue
+				}
+			}
+
+			console.log(arr[i]);
+		}
+
+		console.log('\n**** While Loop ****');
+		var whileCounter = 0;
+
+		/* the while loop, keeps executing while the comparison is true, only when the
+		comparison becomes false the loop stop */
+
+		while (whileCounter < 10) {
+
+			whileCounter++;
+			console.log(whileCounter);
+
+		}
+
+		/* Do while is almost the same, the unique difference is that the do's curly braces 
+		executes the first time no matter if the while comparision is false or true */
+
+		do {
+			console.log(arr[whileCounter]);
+			whileCounter++;
+		} while (whileCounter < arr.length);
+
+	</script>
+</body>
+</html>

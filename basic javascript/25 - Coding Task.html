@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Note Manager</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+</head>
+<body>
+	<style>
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Josefin Sans', sans-serif;
+		    color: #777;
+		}
+
+		.wrapper {
+		    width: 90%;
+		    max-width: 760px;
+		    margin: 20px auto;
+		    border-radius: 3px;
+		    box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+		    box-sizing: border-box;
+		    padding: 0 0 20px;
+		    border: 1px solid lightgray;
+		}
+
+		.changeBg {
+		    background-color: yellow;
+		}
+
+		.changeFt {
+		    font-style: italic;
+		    font-size: 40px;
+		}
+
+		input {
+		    color: #777;
+		    outline: none;
+		    border: 1px solid #777;
+		}
+		input:focus {
+		    border: 1px solid green;
+		}
+		header {
+		    text-align: center;
+		    background: #efefef;
+		}
+
+		header h2 {
+		    padding: 40px 0 20px 0;
+		    color: #555;
+		}
+
+		header #search-note input{
+		    padding: 5px 2px;
+		    width: 200px;
+		    border-radius: 2px;
+		    margin: 10px 0 40px 0;
+		}
+
+		.note-list ul {
+		    list-style: none;
+		    padding: 40px;
+		}
+
+		.note-list ul li {
+		    padding: 5px;
+		    margin-bottom: 10px;
+		    border-bottom: 0.1px solid #ccc;
+		    border-left: 5px solid #efefef;
+		}
+
+		.note-list ul li p:nth-child(2) {
+		    text-align: right;
+		}
+
+		.note-list ul li p i {
+		    cursor: pointer;
+		    margin-left: 5px;
+		}
+
+		.note-list ul li p i.fa-pencil-square-o{
+		    color: #228B22;
+		}
+		.note-list ul li p i.fa-times {
+		    color: #DC143C;
+		}
+		.note-list ul li input {
+		    display: none;
+		    padding: 5px 0;
+		    width: 70%;
+		    margin: 5px auto 0 auto;
+		}
+
+		#add-notes {
+		    padding: 60px 0;
+		}
+		#hide-list {
+		    margin: 20px;
+		}
+		#hide-list label {
+		    padding: 5px 10px;
+		    margin: 10px;
+		    border-bottom: 1px solid #777;
+		    user-select: none;
+		}
+
+		#hide-list label:hover {
+		    background: #efefef;
+		}
+
+		#hide-list input[type='checkbox'] {
+		    display: none;
+		}
+
+		form#add{
+		    margin-top: 10px;
+		    text-align: center;
+		}
+
+		form#add input{
+		    border-radius: 2px;
+		}
+
+		form#add input[type='text'] {
+		    padding: 5px 0 5px 2px;
+		    width: 250px;
+		}
+
+		form#add input[type='submit'] {
+		    padding: 5px 0;
+		    width: 70px;
+		    background: #6B8E23;
+		    color: #fff;
+		} 
+
+		form#add input[type='submit']:hover {
+		    background: #7c9f34;
+		}
+	</style>
+
+	<div class="wrapper">
+		<header>
+			<h2 id="heading">Note Manager</h2>
+			<form id="search-note">
+				<input type="text" placeholder="Search note...">
+			</form>
+		</header>
+		<div class="note-list">
+			<ul id="list">
+				<li>
+					<p>First note</p> 
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+				<li id="listItem">
+					<p>Second note</p>
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+				<li>
+					<p>Third note</p>
+					<p><i class="fa fa-pencil-square-o"></i><i class="fa fa-times"></i></p>
+					<input class="edit-note" type="text">
+				</li>
+			</ul>
+		</div>
+		<div id="hide-list">
+		    <label for="hide">Hide notes</label>
+		    <input type="checkbox" id="hide">
+	    </div>
+		<div id="add-notes">
+			<form id="add">
+				<input type="text" placeholder="Add a note.." id="add-input">
+				<input type="submit"  value="Add" id="add-btn">
+			</form>
+		</div>
+	</div>
+</body>
+<script>
+
+	function createNodeStructure(text){
+		var li = document.createElement('li');
+
+		var p1 = document.createElement('p'),
+		    p2 = document.createElement('p');
+
+		var p2i1 = document.createElement('i'),
+			p2i2 = document.createElement('i');
+
+		var input = document.createElement('input');
+
+		p1.innerText = text;
+
+		p2i1.className = "fa fa-pencil-square-o";
+		p2i2.className = "fa fa-times";
+
+		p2.appendChild(p2i1);
+		p2.appendChild(p2i2);
+
+		input.className = "edit-note";
+		input.setAttribute('type', 'text');
+
+		li.appendChild(p1);
+		li.appendChild(p2);
+		li.appendChild(input);
+
+		return li;
+	}
+
+	function addNewNote(e) {
+		e.preventDefault();
+		var text = document.getElementById('add-input');
+		var notes = document.getElementById('list');
+
+		if (text.value.length < 1) {
+			return
+		} else {
+			/*var notes = document.getElementById('list');
+			var mynewnote = document.createElement('li');
+
+			mynewnote.innerHTML = notes.children[0].innerHTML;
+			mynewnote.children[0].innerHTML = text.value;
+
+			notes.appendChild(mynewnote);
+			text.value = '';*/
+
+			var li = createNodeStructure(text.value);
+			notes.appendChild(li);
+
+			text.value = '';
+		}
+
+			edit_icons = document.querySelectorAll('.fa-pencil-square-o');
+			Array.from(edit_icons).forEach(function(element, index) {
+				element.addEventListener('click', edit_note);
+			})
+
+			delete_icons = document.querySelectorAll('.fa-times');
+			Array.from(delete_icons).forEach(function(element, index) {
+				element.addEventListener('click', delete_note);
+			})
+	}
+
+	function edit_note(e) {
+		var myObject = e;
+		var element = e.target;
+		var noteText = element.parentElement.previousElementSibling
+		var input = element.parentElement.nextElementSibling;
+
+		element.parentElement.style.display = 'none';
+		input.style.display = 'block';
+		input.value = noteText.textContent;
+
+		input.addEventListener('keypress', function(e){
+			if (e.keyCode != 13) {
+				return
+			} else {
+				if (input.value.length > 0){
+					noteText.textContent = input.value;
+					element.parentElement.style.display = 'block';
+					input.style.display = 'none';
+				} else {
+					delete_note(myObject);
+				}
+			}
+		})
+	}
+
+	function delete_note(e) {
+		var element = e.target;
+		var del_li = element.parentElement.parentElement;
+		var del_ul = del_li.parentElement;
+
+		del_ul.removeChild(del_li);
+	}
+
+	function hide_notes(e) {
+		var label = e.target
+		checkbox = label.nextElementSibling;
+		var notes = document.getElementById('list');
+
+		if (checkbox.checked){
+			label.textContent = 'Unhide Notes'
+			notes.style.display = 'none';
+		} else {
+			label.textContent = 'Hide Notes'
+			notes.style.display = 'block';
+		}
+	}
+
+	function search_filter(e) {
+		var search_text = e.target.value.toUpperCase();
+
+		var ul = document.getElementById('list');
+		var li = ul.querySelectorAll('li');
+
+		Array.from(li).forEach(function(myli){
+			var possible_text = myli.children[0].textContent.toUpperCase();
+
+			if (possible_text.indexOf(search_text) >= 0) {
+				myli.style.display = 'block';
+			} else {
+				myli.style.display = 'none';
+			}
+		})
+	}
+
+	add_button = document.getElementById('add-btn');
+	add_button.addEventListener('click', addNewNote)
+
+	edit_icons = document.querySelectorAll('.fa-pencil-square-o');
+	Array.from(edit_icons).forEach(function(element, index) {
+		element.addEventListener('click', edit_note);
+	})
+
+	delete_icons = document.querySelectorAll('.fa-times');
+	Array.from(delete_icons).forEach(function(element, index) {
+		element.addEventListener('click', delete_note);
+	})
+
+	hide_button = document.getElementById('hide-list').querySelector('label');
+	hide_button.addEventListener('click', hide_notes);
+
+	search_input = document.querySelector('#search-note input');
+	search_input.addEventListener('keyup', search_filter);
+
+</script> 
+</html>

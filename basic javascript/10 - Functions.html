@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Functions</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* You can make functions with function statements, its syntax is:
+		function nameoffunction (arguments) and after the code of the function inside
+		curly braces */
+
+		function passExam (name, score) {
+			universityLimit = 71;
+			collegeLimit = 51;
+
+			if (score >= universityLimit) {
+				console.log(name + ' has passed the university exam');
+			} else if (score >= collegeLimit) {
+				console.log(name + ' has passed the college exam');
+			} else {
+				console.log(name + ' has failed the exam');
+			}
+		}
+
+		function calcScore (score1, score2) {
+			var score = score1 + score2;
+			return score;
+		}
+
+		console.log('\n**** First function  ****');
+
+		/* You can call functions in this syntax:
+		nameoffunction(arguments); */
+
+		passExam('John', calcScore(40, 35));
+		passExam('Mary', 65);
+		passExam('Bob', 45);
+
+		function add(a, b) {
+			console.log(a + b);
+		}
+
+		/* You can declare function using anonymous function, the syntax of
+		anonymous functions is :
+		function(arguments)
+
+		and you can attach this to a variable */
+
+		var sum = function(a, b) {
+			console.log(a + b);
+		}
+
+		console.log('\n**** Second Function ****')
+
+		add(5, 10);
+		sum(10, 15);
+	</script>
+</body>
+</html>

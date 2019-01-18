@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Coding Task 2</title>
+</head>
+<body>
+</body>
+	<script>
+		/* Here's one of my coding tasks */
+
+		/* First create a array of students, each students has a object with
+		his name and his score */
+		var students = [
+			{
+				name: 'John',
+				score1: 47,
+				score2: 46
+			},{
+				name: 'Bob',
+				score1: 23,
+				score2: 24
+			},{
+				name: 'Nick',
+				score1: 40,
+				score2: 35
+			},{
+				name: 'Alex',
+				score1: 44,
+				score2: 45
+			}
+		]
+
+		/* and here, an object with the equal of the scores */
+		var degrees = {
+			A: 91,
+			B: 81,
+			C: 71,
+			D: 61,
+			E: 51
+		}
+
+		function check(student) {
+			var name = student.name;
+			var score = student.score1 + student.score2;
+
+			if (score >= degrees.A ) {
+				console.log(name + ' has passed the examn with A degree, his points are ' + score + ' points');
+			} else if (score >= degrees.B ) {
+				console.log(name + ' has passed the examn with B degree, his points are ' + score + ' points');
+			} else if (score >= degrees.C ) {
+				console.log(name + ' has passed the examn with C degree, his points are ' + score + ' points');
+			} else if (score >= degrees.D ) {
+				console.log(name + ' has passed the examn with D degree, his points are ' + score + ' points');
+			} else if (score >= degrees.E ) {
+				console.log(name + ' has passed the examn with E degree, his points are ' + score + ' points');
+			} else {
+				console.log(name + ' has failed the examn with ' + score + ' points');
+			}
+		}
+
+		for (var i = 0; i < students.length; i++){
+			check(students[i]);
+		}
+
+	</script>
+</html>

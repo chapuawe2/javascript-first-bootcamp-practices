@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Eighth Lesson</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var prof = 'engineer';
+
+		/* make the comparison with if and else */
+
+		console.log('\n**** First Comparison ****');
+
+		/* the if statement checks the comparison and if the comparison is true
+		it executes the code inside the first curly braces, */
+
+		if (prof === 'doctor') {
+			console.log(prof + ' treats the people');
+		} else if (prof === 'instructor') {
+			/* else if executes when if its not true, else if makes other comparison
+			and if its true it executes the code inside its curly braces */
+
+			console.log(prof + ' teaches the students');
+		} else {
+			/* else executes when the other comparison was false */
+
+			console.log(prof + ' doesnt match');
+		}
+
+		console.log('\n**** Second Comparison ****')
+
+		if (5 === 5 && 4 === 4) {
+			/* a comparison with && operator only executes when these two comparison
+			are true, if not it dont executes, pd: has big precedence than || and others,
+			that means that && executes first */
+
+			console.log("all are true");
+		} 
+
+		if (5 === 5 || 4 === 4) {
+			/* a comparison with || has lower precedence than && but bigger than others, so
+			that means that || will be executed after && but before than others */
+
+			console.log("five equals to five or four equals to four")
+		}
+
+		if (5 !== 6 ) {
+			/* !== reverse (previous class) so if its false it return true */
+
+			console.log("it's true");
+		} else {
+			console.log("it's false");
+		}
+
+	</script>
+</body>
+</html>
